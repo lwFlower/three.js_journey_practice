@@ -19,6 +19,7 @@
   "homepage": "https://github.com/lwFlower/three.js_journey_practice#readme",
   "description": "",
   "dependencies": {
+    "gsap": "3.12",
     "three": "^0.182.0",
     "vite": "^7.3.1"
   }

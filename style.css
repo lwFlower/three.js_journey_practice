@@ -1,0 +1,23 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.container .idleBtn {
+  width: 150px;
+  height: 30px;
+  font-size: medium;
+  background-color: papayawhip;
+  border-radius: 10px;
+  border-color: rgb(119, 59, 16);
+  transition: background-color 0.2s ease, transform 0.1s ease;
+  &:hover {
+    background-color: #fff5e5;
+  }
+  &:active {
+    background-color: white;
+    border-color: red;
+    transform: scale(0.97);
+  }
+}

@@ -2,6 +2,12 @@ import * as THREE from 'three';
 import gsap from 'gsap';
 import { OrbitControls } from 'three/examples/jsm/Addons.js';
 import { animateIdle, initIdleButton, getIdleButton, setDefaultPosition  } from './utils';
+import GUI from 'lil-gui';
+
+/**
+ * Debug
+ */
+const gui = new GUI();
 
 window.addEventListener('resize', () => {
   //Update size
@@ -45,8 +51,17 @@ const geometry = new THREE.BoxGeometry(1, 1, 1);
 // geometry.setAttribute('position', positionAttribute);
 
 //box
-const material = new THREE.MeshBasicMaterial({ color: 0xff0000, transparent: true, opacity: 0.5 });
+const material = new THREE.MeshBasicMaterial({ color: 0xff0000});
 const mesh = new THREE.Mesh(geometry, material);
+
+scene.add(mesh);
+
+gui
+  .add(mesh.position, 'y')
+  .min(-3)
+  .max(3)
+  .step(0.01)
+  .name('elevation')
 
 //wireframe
 const wireframeGeometry = new THREE.WireframeGeometry(geometry);
@@ -57,8 +72,8 @@ const wireframe = new THREE.LineSegments(wireframeGeometry, wireframeMaterial);
 
 //cube object
 const cube = new THREE.Object3D();
-cube.add(mesh)
-cube.add(wireframe);
+// cube.add(mesh)
+// cube.add(wireframe);
 //cube.scale.x = 2;
 
 //Rotation
@@ -66,12 +81,12 @@ cube.add(wireframe);
 // cube.rotation.x = Math.PI * 1.34
 // cube.rotation.y = Math.PI * 0.25;
 
-scene.add(cube);
+//scene.add(cube);
 
 //Group
 const group = new THREE.Group();
-scene.add(group);
-group.add(cube);
+//scene.add(group);
+//group.add(cube);
 
 const purpleMaterial = material.clone();
 const purpleCube = new THREE.Mesh(geometry, purpleMaterial);
@@ -91,7 +106,7 @@ group.position.y = -0.5;
 
 const axesHelper = new THREE.AxesHelper(1.5);
 axesHelper.position.y = -0.5;
-scene.add(axesHelper);
+//scene.add(axesHelper);
 
 const size = {
   width: window.innerWidth,
@@ -101,7 +116,7 @@ const size = {
 //CAMERA
 
 const camera = new THREE.PerspectiveCamera(75, size.width / size.height, 0.1, 100);
-const aspectRation = size.width / size.height;
+// const aspectRation = size.width / size.height;
 //const camera = new THREE.OrthographicCamera(-1 * aspectRation, 1 * aspectRation, 1, -1, 0.1, 100);
 camera.position.z = 3;
 camera.position.y = 1.5;
@@ -121,7 +136,7 @@ const renderer = new THREE.WebGLRenderer({
 renderer.setSize(size.width, size.height);
 
 //Background
-scene.background = new THREE.Color(0xffbff0)
+scene.background = new THREE.Color(0x000000)
 
 //Time test
 //let time = Date.now();

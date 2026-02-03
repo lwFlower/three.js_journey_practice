@@ -3,19 +3,27 @@ import gsap from 'gsap';
 import { OrbitControls } from 'three/examples/jsm/Addons.js';
 import { animateIdle, initIdleButton, getIdleButton, setDefaultPosition  } from './utils';
 
-/**
- * Cursor
- */
-const cursor = {
-  x: 0,
-  y: 0,
-}
+window.addEventListener('resize', () => {
+  //Update size
+  size.width = window.innerWidth;
+  size.height = window.innerHeight
 
-// window.addEventListener('mousemove', (event) => {
+  //Update camera
+  camera.aspect = size.width / size.height;
+  camera.updateProjectionMatrix();
 
-//   cursor.x = event.clientX / size.width - 0.5;
-//   cursor.y = -(event.clientY / size.height - 0.5);
-// })
+  //Update renderer
+  renderer.setSize(size.width, size.height);
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+})
+
+window.addEventListener('dblclick', () => {
+  if (!document.fullscreenElement) {
+    canvas.requestFullscreen();
+  } else {
+    document.exitFullscreen();
+  }
+})
 
 const canvas = document.querySelector('canvas.webgl');
 
@@ -73,8 +81,8 @@ axesHelper.position.y = -0.5;
 scene.add(axesHelper);
 
 const size = {
-  width: 800,
-  height: 600,
+  width: window.innerWidth,
+  height: window.innerHeight,
 };
 
 //CAMERA

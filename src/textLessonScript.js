@@ -20,8 +20,10 @@ const scene = new THREE.Scene()
  * Textures
  */
 const textureLoader = new THREE.TextureLoader();
-const matcapTexture = textureLoader.load('/textures/matcaps/3.png');
-matcapTexture.colorSpace = THREE.SRGBColorSpace;
+const matcapTextTexture = textureLoader.load('/textures/matcaps/4.png');
+matcapTextTexture.colorSpace = THREE.SRGBColorSpace;
+
+const matcapDonutTexture = textureLoader.load('/textures/matcaps/1.png');
 
 
 /**
@@ -33,7 +35,7 @@ fontLoader.load(
     '/fonts/helvetiker_regular.typeface.json',
     (font) => {
         const textGeometry = new TextGeometry(
-            'Technoblade',
+            `hello Three.js`,
             {
                 font,
                 size: 0.5,
@@ -48,14 +50,15 @@ fontLoader.load(
         );
         textGeometry.center();
 
-        const material = new THREE.MeshMatcapMaterial({ matcap: matcapTexture });
-        const text = new THREE.Mesh(textGeometry, material);
+        const textMaterial = new THREE.MeshMatcapMaterial({ matcap: matcapTextTexture });
+        const text = new THREE.Mesh(textGeometry, textMaterial);
         scene.add(text);
 
         const donutGeometry = new THREE.TorusGeometry(0.3, 0.2, 20, 45);
+        const donutMaterial = new THREE.MeshMatcapMaterial({ matcap: matcapDonutTexture })
 
-        for (let i = 0; i < 1000; i++) {
-            const donut = new THREE.Mesh(donutGeometry, material);
+        for (let i = 0; i < 500; i++) {
+            const donut = new THREE.Mesh(donutGeometry, donutMaterial);
 
             donut.position.x = (Math.random() - 0.5 ) * 20;
             donut.position.y = (Math.random() - 0.5 ) * 20;

@@ -1,46 +1,43 @@
-body {
+*
+{
   margin: 0;
   padding: 0;
 }
 
-html,
+html {
+ background: #1e1a20;
+}
+
+/* html,
 body
 {
   overflow: hidden;
-}
+} */
 
-.container {
-  /* display: flex;
-  flex-direction: column;
-  gap: 12px; */
-  position: relative;
-}
-
-.webgl {
+.webgl
+{
   position: fixed;
   top: 0;
   left: 0;
   outline: none;
 }
 
-.container .idleBtn {
-  position: fixed;
-  top: 5px;
-  left: 5px;
-  z-index: 10;
-  width: 150px;
-  height: 30px;
-  font-size: medium;
-  background-color: papayawhip;
-  border-radius: 10px;
-  border-color: rgb(119, 59, 16);
-  transition: background-color 0.2s ease, transform 0.1s ease;
-  &:hover {
-    background-color: #fff5e5;
-  }
-  &:active {
-    background-color: white;
-    border-color: red;
-    transform: scale(0.97);
-  }
+
+.section
+{
+  display: flex;
+  align-items: center;
+  height: 100vh;
+  position: relative;
+  font-family: 'Cabin', sans-serif;
+  color: #ffeded;
+  text-transform: uppercase;
+  font-size: 7vmin;
+  padding-left: 10%;
+  padding-right: 10%;
+}
+
+section:nth-child(odd)
+{
+  justify-content: flex-end;
 }

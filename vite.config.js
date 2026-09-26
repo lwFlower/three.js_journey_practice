@@ -1,3 +1,4 @@
+import glsl from 'vite-plugin-glsl'
 import restart from 'vite-plugin-restart'
 
 export default {
@@ -5,6 +6,7 @@ export default {
     publicDir: '../static/',
     plugins:
     [
-        restart({ restart: [ '../static/**', ] }) // Restart server on static file change
+        restart({ restart: [ '../static/**', ] }), // Restart server on static file change
+        glsl()
     ],
 }

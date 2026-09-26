@@ -42,7 +42,7 @@ debugging in production projects.
 
 ```bash
 git clone https://github.com/lwFlower/ИМЯ_РЕПОЗИТОРИЯ.git
-cd ИМЯ_РЕПОЗИТОРИЯ
+cd three.js_journey_practice
 npm install
 npm run dev
 ```
